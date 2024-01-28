@@ -21,7 +21,7 @@ export default defineConfig({
   // retries: process.env.CI ? 2 : 0,   // no retry 0
   // retries: process.env.CI ? 2 : 2, // retry 2 times
   // or
-  retries: 2, //retry two times
+  retries: 1, //retry two times
 
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined, // 1 no parallel (Defaults to half of the number of logical CPU cores - https://playwright.dev/docs/test-parallel
@@ -79,62 +79,62 @@ export default defineConfig({
       // viewport: { width: 1280, height: 720 },
     },
 
-    {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
-    },
+    // {
+    //   name: "firefox",
+    //   use: { ...devices["Desktop Firefox"] },
+    // },
 
-    {
-      name: "webkit",
-      use: { ...devices["Desktop Safari"] },
-    },
-    {
-      name: "all-browsers-and-tests",
-      use: {
-        baseURL: "https://playwright.dev/",
-        ...devices["Desktop Chrome"],
-      },
-    },
+    // {
+    //   name: "webkit",
+    //   use: { ...devices["Desktop Safari"] },
+    // },
+    // {
+    //   name: "all-browsers-and-tests",
+    //   use: {
+    //     baseURL: "https://playwright.dev/",
+    //     ...devices["Desktop Chrome"],
+    //   },
+    // },
 
-    {
-      name: "all-browsers-and-tests",
-      use: {
-        baseURL: "https://playwright.dev/",
-        ...devices["Desktop Safari"],
-      },
-    },
+    // {
+    //   name: "all-browsers-and-tests",
+    //   use: {
+    //     baseURL: "https://playwright.dev/",
+    //     ...devices["Desktop Safari"],
+    //   },
+    // },
 
-    {
-      name: "all-browsers-and-tests",
-      use: {
-        baseURL: "https://playwright.dev/",
-        ...devices["Desktop Firefox"],
-      },
-    },
+    // {
+    //   name: "all-browsers-and-tests",
+    //   use: {
+    //     baseURL: "https://playwright.dev/",
+    //     ...devices["Desktop Firefox"],
+    //   },
+    // },
 
-    // Example only
-    {
-      name: "local",
-      use: {
-        baseURL: baseEnvUrl.local.home,
-      },
-    },
+    // // Example only
+    // {
+    //   name: "local",
+    //   use: {
+    //     baseURL: baseEnvUrl.local.home,
+    //   },
+    // },
 
-    // Example only
-    {
-      name: "ci",
-      use: {
-        baseURL: process.env.CI
-          ? baseEnvUrl.ci.prefix +
-          process.env.GITHUB_REF_NAME +
-          baseEnvUrl.ci.suffix //https://dev-myapp-chapter-2.mydomain.com
-          : baseEnvUrl.staging.home,
-      },
-      /**
-       * GitHub variables: https://docs.github.com/en/actions/learn-github-actions/variables
-       * GitLab variables: https://docs.gitlab.com/ee/ci/variables/predefined_variables.html#predefined-variables-reference
-       */
-    },
+    // // Example only
+    // {
+    //   name: "ci",
+    //   use: {
+    //     baseURL: process.env.CI
+    //       ? baseEnvUrl.ci.prefix +
+    //       process.env.GITHUB_REF_NAME +
+    //       baseEnvUrl.ci.suffix //https://dev-myapp-chapter-2.mydomain.com
+    //       : baseEnvUrl.staging.home,
+    //   },
+    //   /**
+    //    * GitHub variables: https://docs.github.com/en/actions/learn-github-actions/variables
+    //    * GitLab variables: https://docs.gitlab.com/ee/ci/variables/predefined_variables.html#predefined-variables-reference
+    //    */
+    // },
 
     /* Test against mobile viewports. */
     // {
