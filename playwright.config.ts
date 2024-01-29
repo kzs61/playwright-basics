@@ -11,7 +11,8 @@ import baseEnvUrl from './utils/environmentBaseUrl';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: "./tests",
+  // testDir: "./tests",
+  // testDir: "./tests-examples",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -50,7 +51,8 @@ export default defineConfig({
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on-first-retry",
+    // trace: "on-first-retry",
+    trace: "on",
     screenshot: "only-on-failure",
     // headless: false,  // by default playwright runs headless, setting to false will make the test run in browser(s)
     // ignoreHTTPSErrors: true,

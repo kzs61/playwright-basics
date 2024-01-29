@@ -1,0 +1,68 @@
+
+- Install ms vsc playwright extension 
+    https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright 
+- install playwright latest
+    $ npm init playwright@latest
+
+    Do you want to use TS or JS > TS (Default)
+    Where to put your e2e tests > tests
+    Add a Github Actiond workflow > false
+    Install playwright browsers > true
+
+- run tests
+    $ npx playwright test
+
+- reports
+    $ npx playwright show-report
+
+- Retry: https://playwright.dev/docs/test-configuration 
+  if env vars for CI is true retry will be on in CI but not locally
+  // retries: process.env.CI ? 2 : 0,   // no retry 0 
+  // retries: process.env.CI ? 2 : 2, // retry 2 times
+  // or
+  retries: 2 //retry two times
+
+- Parallel run: https://playwright.dev/docs/test-parallel
+    /* Opt out of parallel tests on CI. */
+  workers: process.env.CI ? 1 : undefined, // By default there will be 1 worker in the ci. Locally undefined so, no parallel run. Defaults to half of the number of logical CPU cores
+
+- trace:
+
+  Whether to record trace for each test. Defaults to 'off'.
+
+'off': Do not record trace.
+'on': Record trace for each test.
+'retain-on-failure': Record trace for each test, but remove all traces from successful test runs.
+'on-first-retry': Record trace only when retrying a test for the first time.
+'on-all-retries': Record traces only when retrying for all retries.
+For more control, pass an object that specifies mode and trace features to enable.
+
+Usage
+
+// playwright.config.ts
+import { defineConfig } from '@playwright/test';
+
+export default defineConfig({
+  use: {
+    trace: 'on-first-retry'
+  },
+});
+
+
+   // headless: false,  // by default playwright runs headless, setting to false will make the test run in browser(s)
+
+
+Run specific test from terminal with desired browser:
+add "only" after test "test.only('check java page'....." and run the test
+"$ npx playwright test <file path> --project=chromium"
+$ npx playwright test tests/ --project=chromium
+
+$ npx playwright test tests-examples/ --project=chromium
+
+Run specific test spec in debug mode:
+$ npx playwright test tests-examples/ --project=chromium --debug
+
+
+
+git commit -m "throuble shooting and debugging 
+
